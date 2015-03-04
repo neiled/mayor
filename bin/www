@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var debug = require('debug')('express-example');
+var debug = require('debug')('mayor');
 var app = require('../app');
 var models = require("../models");
 
