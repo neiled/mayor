@@ -1,9 +1,5 @@
-var Router = ReactRouter;
-
-var DefaultRoute = Router.DefaultRoute;
-var Link = Router.Link;
-var Route = Router.Route;
-var RouteHandler = Router.RouteHandler;
+var React = require("react");
+var RouteHandler = require("react-router").RouteHandler;
 
 var App = React.createClass({
   render: function () {
@@ -55,12 +51,4 @@ var App = React.createClass({
   }
 });
 
-var routes = (
-  <Route name="app" path="/" handler={App}>
-    <Route name="fishing" handler={Fishing}/>
-  </Route>
-);
-
-Router.run(routes, function (Handler) {
-  React.render(<Handler/>, document.body);
-});
+module.exports = App;
