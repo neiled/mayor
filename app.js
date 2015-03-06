@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var fishing = require('./routes/fishing');
 
 var app = express();
 
@@ -23,7 +23,7 @@ app.use("/_assets", express.static(path.join(__dirname, "..", "build", "public")
   maxAge: "200d" // We can cache them as they include hashes
 }));
 app.use("/", express.static(path.join(__dirname, 'client')));
-// app.use('/', routes);
+app.use('/fishing', fishing);
 // catch 404 and forward to error handler
 
 

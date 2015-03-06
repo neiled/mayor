@@ -3,5 +3,8 @@ var express = require('express');
 var router  = express.Router();
 
 router.post('/cast', function(req, res) {
-    res.json({});
+    res.json({fish: 'trout'});
 });
+
+
+module.exports = router;

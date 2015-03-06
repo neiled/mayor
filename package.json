@@ -11,8 +11,8 @@
   "dependencies": {
     "async": "^0.9.0",
     "body-parser": "~1.12.0",
-    "css-loader": "^0.9.1",
     "cookie-parser": "~1.3.4",
+    "css-loader": "^0.9.1",
     "debug": "~2.1.2",
     "express": "~4.12.2",
     "extract-text-webpack-plugin": "^0.3.8",
