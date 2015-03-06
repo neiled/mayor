@@ -8,7 +8,7 @@ if(!Object.assign)
 	Object.assign = React.__spread;
 
 module.exports = (
-  <Route name="app" path="/" handler={require("./Application")}>
+  <Route name="app" path="/" handler={require("./Application/index")}>
     <Route name="fishing" handler={require("./Fishing")}/>
   </Route>
 );

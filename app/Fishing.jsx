@@ -1,3 +1,5 @@
+var React = require("react");
+
 var Fishing = React.createClass({
   render: function() {
     return (
@@ -9,3 +11,5 @@ var Fishing = React.createClass({
     );
   }
 });
+
+module.exports = Fishing;
