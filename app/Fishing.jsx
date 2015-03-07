@@ -2,11 +2,23 @@ var React = require("react");
 var request = require('superagent');
 
 
+var FishingResults = React.createClass({
+  render: function() {
+    return (
+      this.props.fish ? <p>You caught a {this.props.fish}</p> : <p></p>
+    );
+  }
+});
+
 var Fishing = React.createClass({
+  getInitialState: function() {
+    return {fish: null};
+  },
   handleClick: function(event) {
     request.post('/fishing/cast').end(function(error, res) {
-      alert(res);
-    });
+      this.setState({fish: res.body.fish});
+    }.bind(this)
+    );
   },
   render: function() {
     return (
@@ -15,6 +27,7 @@ var Fishing = React.createClass({
           Fishing
         </h2>
         <button onClick={this.handleClick}>Fish</button>
+        <FishingResults fish={this.state.fish}/>
       </div>
     );
   }
