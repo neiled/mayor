@@ -4,8 +4,8 @@ module.exports = function(options) {
 
   var debug = require('debug')('mayor');
   var app = require('../app');
-  var models = require("../models");
   var renderApplication = require("../config/simple.js");
+  var models = require("../models");
 
   app.set('port', process.env.PORT || 3000);
   app.set('ip', process.env.IP || "0.0.0.0");

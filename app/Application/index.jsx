@@ -6,8 +6,30 @@ var Link = Router.Link;
 var Route = Router.Route;
 var RouteHandler = Router.RouteHandler;
 
+
 var App = React.createClass({
+  getInitialState: function() {
+    return {user: null};
+  },
+  componentDidMount: function() {
+    $.get("/user/current", function(result) {
+      if(this.isMounted()) {
+        this.setState({user: result});
+      }
+    }.bind(this));
+  },
+  renderAuthLinks: function() {
+    console.log("state: ");
+    console.log(this.state.user);
+    if(this.state.user && Object.keys(this.state.user).length !== 0)
+    {
+      return (<li><a href="/auth/logout">Sign out...</a></li>);
+    }
+    return (<li><a href="/auth/twitter">Sign in...</a></li>);
+
+  },
   render: function () {
+    var authLinks = this.renderAuthLinks();
     return (
         <div>
             <nav className="navbar navbar-inverse navbar-fixed-top">
@@ -23,7 +45,7 @@ var App = React.createClass({
                 </div>
                 <div id="navbar" className="navbar-collapse collapse">
                   <ul className="nav navbar-nav navbar-right">
-                    <li><a href="#">Sign out...</a></li>
+                    {authLinks}
                     <li><a href="#">Settings</a></li>
                     <li><a href="#">Help</a></li>
                   </ul>

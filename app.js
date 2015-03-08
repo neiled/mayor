@@ -4,10 +4,41 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var passport = require('passport');
+var TwitterStrategy = require('passport-twitter').Strategy;
+var session = require('express-session')
 var fishing = require('./routes/fishing');
+var user = require('./routes/user');
+var models = require("./models");
 
 var app = express();
+
+
+// Use the TwitterStrategy within Passport.
+//   Strategies in passport require a `verify` function, which accept
+//   credentials (in this case, a token, tokenSecret, and Twitter profile), and
+//   invoke a callback with a user object.
+passport.use(new TwitterStrategy({
+    consumerKey: process.env.TWITTER_KEY,
+    consumerSecret: process.env.TWITTER_SECRET,
+    callbackURL: "http://localhost:3000/auth/twitter/callback"
+  },
+  function(token, tokenSecret, profile, done) {
+    models.User.findOrCreate({where: { twitterId: profile.id }}).spread(function (user) {
+      return done(null, user);
+    });
+  }
+));
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id); // this is what gets attached to the session
+});
+
+passport.deserializeUser(function(id, done) {
+    models.User.find(id).then(function(user) {
+        done(null, user);
+    });
+});
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
@@ -17,14 +48,45 @@ var app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({ secret: 'keyboard catZZZ' }));
 app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/_assets", express.static(path.join(__dirname, "..", "build", "public"), {
   maxAge: "200d" // We can cache them as they include hashes
 }));
 app.use("/", express.static(path.join(__dirname, 'client')));
 app.use('/fishing', fishing);
-// catch 404 and forward to error handler
+app.use('/user', user);
 
+// GET /auth/twitter
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  The first step in Twitter authentication will involve redirecting
+//   the user to twitter.com.  After authorization, the Twitter will redirect
+//   the user back to this application at /auth/twitter/callback
+app.get('/auth/twitter',
+  passport.authenticate('twitter'),
+  function(req, res){
+    // The request will be redirected to Twitter for authentication, so this
+    // function will not be called.
+  });
+
+// GET /auth/twitter/callback
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  If authentication fails, the user will be redirected back to the
+//   login page.  Otherwise, the primary route function function will be called,
+//   which, in this example, will redirect the user to the home page.
+app.get('/auth/twitter/callback',
+  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+
+app.get('/auth/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 module.exports = app;
