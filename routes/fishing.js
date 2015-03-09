@@ -17,6 +17,28 @@ router.post('/cast', function(req, res) {
   res.json({fish: fish});
 });
 
+router.post('/keep/:id', function(req, res) {
+  //get fish from redis
+  //store the fish type in inventory
+  client.get("fish:"+req.params.id, function(err, reply) {
+    // reply is null when the key is missing
+    if(reply)
+    {
+      console.log(reply);
+      models.Inventory.findOrCreate({where: { item_id: reply }}).spread(function(fish) {
+        var newAmount = fish.amount || 0;
+        newAmount += 1;
+        fish.amount = newAmount;
+        fish.save().then(function()
+        {
+          res.status(200).end();
+        });
+      });
+    }
+});  
+
+});
+
 var getFish = function() {
   return {id: uuid.v4(), name: 'trout', type_id: 1};
 }
