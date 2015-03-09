@@ -9,7 +9,7 @@ var FishingResults = React.createClass({
     );
   },
   handleClickKeep: function(event) {
-    request.post('/fishing/keep/').end(function(error, res) {
+    request.post('/fishing/keep/'+this.props.fish.id).end(function(error, res) {
       this.props.decision();
     }.bind(this)
     );
@@ -46,12 +46,15 @@ var Fishing = React.createClass({
   },
   render: function() {
     return (
-      <div className="Fishing">
-        <h2>
-          Fishing
-        </h2>
-        {!this.state.fish ? <button onClick={this.handleClick}>Fish</button> : <p></p>}
-        {this.state.fish ? <FishingResults fish={this.state.fish} decision={this.resetAfterFishingDecision}/> : <p></p>}
+      <div>
+        <div className="jumbotron">
+          <h2> Fishing </h2>
+          <p>Here you can fish the village waters.</p>
+        </div>
+        <div>
+          {!this.state.fish ? <button className="btn btn-primary" onClick={this.handleClick}>Fish</button> : <p></p>}
+          {this.state.fish ? <FishingResults fish={this.state.fish} decision={this.resetAfterFishingDecision}/> : <p></p>}
+        </div>
       </div>
     );
   }
