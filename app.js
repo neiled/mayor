@@ -21,7 +21,7 @@ var app = express();
 passport.use(new TwitterStrategy({
     consumerKey: process.env.TWITTER_KEY,
     consumerSecret: process.env.TWITTER_SECRET,
-    callbackURL: "http://localhost:3000/auth/twitter/callback"
+    callbackURL: "http://retina.local:3000/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
     models.User.findOrCreate({where: { twitterId: profile.id }}).spread(function (user) {

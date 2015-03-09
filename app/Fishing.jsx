@@ -3,9 +3,30 @@ var request = require('superagent');
 
 
 var FishingResults = React.createClass({
+  message: function() {
+    return(
+      this.props.fish ? <p>You caught a {this.props.fish.name}</p> : <p></p>
+    );
+  },
+  handleClickKeep: function(event) {
+    request.post('/fishing/keep/').end(function(error, res) {
+      this.props.decision();
+    }.bind(this)
+    );
+  },
+  handleClickRelease: function(event) {
+    request.post('/fishing/release/').end(function(error, res) {
+      this.props.decision();
+    }.bind(this)
+    );
+  },
   render: function() {
     return (
-      this.props.fish ? <p>You caught a {this.props.fish}</p> : <p></p>
+      <div>
+      {this.message()}
+      <button onClick={this.handleClickKeep}>Keep</button>
+      <button onClick={this.handleClickRelease}>Release</button>
+    </div>
     );
   }
 });
@@ -20,14 +41,17 @@ var Fishing = React.createClass({
     }.bind(this)
     );
   },
+  resetAfterFishingDecision: function() {
+    this.setState({fish: null});
+  },
   render: function() {
     return (
       <div className="Fishing">
         <h2>
           Fishing
         </h2>
-        <button onClick={this.handleClick}>Fish</button>
-        <FishingResults fish={this.state.fish}/>
+        {!this.state.fish ? <button onClick={this.handleClick}>Fish</button> : <p></p>}
+        {this.state.fish ? <FishingResults fish={this.state.fish} decision={this.resetAfterFishingDecision}/> : <p></p>}
       </div>
     );
   }
