@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 module.exports = function(options) {
+  var dotenv = require('dotenv');
+  dotenv.load();
 
   var debug = require('debug')('mayor');
   var app = require('../app');

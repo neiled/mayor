@@ -1,3 +1,6 @@
+var dotenv = require('dotenv');
+dotenv.load();
+
 module.exports = function(grunt) {
 
   // Project configuration.
