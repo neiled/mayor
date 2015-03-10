@@ -10,7 +10,7 @@ var debug = require('debug')('api:fishing');
 
 
 client.on("error", function (err) {
-    console.log("Error " + err);
+    debug("Error " + err);
 });
 
 router.post('/cast', function(req, res) {
@@ -27,7 +27,6 @@ router.post('/keep/:id', function(req, res) {
     // reply is null when the key is missing
     if(reply)
     {
-      console.log(reply);
       models.Inventory.findOrCreate({where: { item_id: reply }}).spread(function(fish) {
         var newAmount = fish.amount || 0;
         newAmount += 1;
@@ -66,8 +65,6 @@ var getRarity = function() {
     return "Rare";
   return "Very Rare";
 };
-
-
 
 
 module.exports = router;

@@ -4,7 +4,7 @@ module.exports = function(options) {
   var dotenv = require('dotenv');
   dotenv.load();
 
-  var debug = require('debug')('mayor');
+  var debug = require('debug')('mayor:server');
   var app = require('../app');
   var renderApplication = require("../config/simple.js");
   var models = require("../models");

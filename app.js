@@ -10,6 +10,7 @@ var session = require('express-session')
 var fishing = require('./routes/fishing');
 var user = require('./routes/user');
 var models = require("./models");
+var debug = require('debug')('mayor:app');
 
 var app = express();
 
@@ -24,6 +25,7 @@ passport.use(new TwitterStrategy({
     callbackURL: process.env.TWITTER_CALLBACK
   },
   function(token, tokenSecret, profile, done) {
+    debug('creating the new user profile id: ' + profile.id);
     models.User.findOrCreate({where: { twitterId: profile.id }}).spread(function (user) {
       return done(null, user);
     });
@@ -31,11 +33,14 @@ passport.use(new TwitterStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
+    debug('serializing user ' + user.id);
     done(null, user.id); // this is what gets attached to the session
 });
 
 passport.deserializeUser(function(id, done) {
+    debug('deserializing user ' + id);
     models.User.find(id).then(function(user) {
+        debug('found user ' + user);
         done(null, user);
     });
 });
