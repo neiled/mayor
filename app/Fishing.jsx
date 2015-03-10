@@ -15,17 +15,17 @@ var FishingResults = React.createClass({
     );
   },
   handleClickRelease: function(event) {
-    request.post('/fishing/release/').end(function(error, res) {
+    // request.post('/fishing/release/').end(function(error, res) {
       this.props.decision();
-    }.bind(this)
-    );
+    // }.bind(this)
+    // );
   },
   render: function() {
     return (
       <div>
       {this.message()}
-      <button onClick={this.handleClickKeep}>Keep</button>
-      <button onClick={this.handleClickRelease}>Release</button>
+      <button className="btn btn-primary" onClick={this.handleClickKeep}>Keep</button>
+      <button className="btn btn-warning" onClick={this.handleClickRelease}>Release</button>
     </div>
     );
   }

@@ -16,5 +16,7 @@ module.exports = (
     <Route name="museum" handler={require("./Museum")}/>
     <Route name="store" handler={require("./Store")}/>
     <Route name="construction" handler={require("./Construction")}/>
+		<DefaultRoute handler={require("./Welcome")}/>
+
   </Route>
 );

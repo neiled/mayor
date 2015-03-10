@@ -3,7 +3,8 @@
 module.exports = function(sequelize, DataTypes) {
   var Item = sequelize.define('Item', {
     name: DataTypes.STRING,
-    type_id: DataTypes.INTEGER
+    rarity: DataTypes.STRING,
+    category: DataTypes.STRING
   }, { });
 
   return Item;
