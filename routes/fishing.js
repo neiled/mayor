@@ -2,8 +2,9 @@ var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
 var uuid = require('uuid');
-var redis = require("redis"),
-    client = redis.createClient();
+// var redis = require("redis"),
+//     client = redis.createClient();
+var client = require('../config/redis');
 var debug = require('debug')('api:fishing');
 
 
@@ -13,9 +14,7 @@ client.on("error", function (err) {
 });
 
 router.post('/cast', function(req, res) {
-  //create random fish, put it in redis
   var fish = getFish(function(fish) {
-    debug(fish);
     client.set("fish:"+fish.id, fish.type_id);
     res.json({fish: fish});
   });
@@ -55,15 +54,15 @@ var getFish = function(callback) {
 };
 
 var getRarity = function() {
-  var random = Math.random() * 1000;
+  var random = Math.random() * 100;
 
-  if(random < 500)
+  if(random < 50)
     return "Very Common";
-  if(random < 750)
+  if(random < 75)
     return "Common";
-  if(random < 900)
+  if(random < 90)
     return "Uncommon";
-  if(random < 999)
+  if(random < 99)
     return "Rare";
   return "Very Rare";
 };
