@@ -54,15 +54,15 @@ var getFish = function(callback) {
 };
 
 var getRarity = function() {
-  var random = Math.random() * 100;
+  var random = Math.random() * 1000;
 
-  if(random < 50)
+  if(random < 500)
     return "Very Common";
-  if(random < 75)
+  if(random < 800)
     return "Common";
-  if(random < 90)
+  if(random < 930)
     return "Uncommon";
-  if(random < 99)
+  if(random < 995)
     return "Rare";
   return "Very Rare";
 };
