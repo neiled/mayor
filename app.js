@@ -10,7 +10,6 @@ var session = require('express-session')
 var fishing = require('./routes/fishing');
 var user = require('./routes/user');
 var models = require("./models");
-var debug = require('debug')('mayor:app');
 
 var app = express();
 
@@ -22,10 +21,9 @@ var app = express();
 passport.use(new TwitterStrategy({
     consumerKey: process.env.TWITTER_KEY,
     consumerSecret: process.env.TWITTER_SECRET,
-    callbackURL: process.env.TWITTER_CALLBACK
+    callbackURL: "http://retina.local:3000/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
-    debug('creating the new user profile id: ' + profile.id);
     models.User.findOrCreate({where: { twitterId: profile.id }}).spread(function (user) {
       return done(null, user);
     });
@@ -33,14 +31,11 @@ passport.use(new TwitterStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
-    debug('serializing user ' + user.id);
     done(null, user.id); // this is what gets attached to the session
 });
 
 passport.deserializeUser(function(id, done) {
-    debug('deserializing user ' + id);
     models.User.find(id).then(function(user) {
-        debug('found user ' + user);
         done(null, user);
     });
 });
@@ -58,7 +53,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/_assets", express.static(path.join(__dirname, "..", "build", "public"), {
+app.use("/_assets", express.static(path.join(__dirname, "build", "public"), {
   maxAge: "200d" // We can cache them as they include hashes
 }));
 app.use("/", express.static(path.join(__dirname, 'client')));

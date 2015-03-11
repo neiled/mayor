@@ -49,7 +49,7 @@ module.exports = function(options) {
 	var root = path.join(__dirname, "app");
 	var publicPath = options.devServer ? "http://retina.local:2992/_assets/" : "/_assets/";
 	var output = {
-		path: path.join(__dirname, "build", options.prerender ? "prerender" : "public"),
+		path: path.join(__dirname, "build", "public"),
 		publicPath: publicPath,
 		filename: "[name].js" + (options.longTermCaching && !options.prerender ? "?[chunkhash]" : ""),
 		chunkFilename: (options.devServer ? "[id].js" : "[name].js") + (options.longTermCaching && !options.prerender ? "?[chunkhash]" : ""),
