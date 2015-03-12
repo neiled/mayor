@@ -27,7 +27,7 @@ router.post('/keep/:id', function(req, res) {
     // reply is null when the key is missing
     if(reply)
     {
-      models.Inventory.findOrCreate({where: { user_id: req.user.id, item_id: reply }}).spread(function(fish) {
+      models.Inventory.findOrCreate({where: { userId: req.user.id, item_id: reply }}).spread(function(fish) {
         var newAmount = fish.amount || 0;
         newAmount += 1;
         fish.amount = newAmount;
