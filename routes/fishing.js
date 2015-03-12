@@ -14,6 +14,7 @@ client.on("error", function (err) {
 });
 
 router.post('/cast', function(req, res) {
+  if(!req.user) return res.status(403).end();
   var fish = getFish(function(fish) {
     client.set("fish:"+fish.id, fish.type_id);
     res.json({fish: fish});
@@ -21,8 +22,7 @@ router.post('/cast', function(req, res) {
 });
 
 router.post('/keep/:id', function(req, res) {
-  //get fish from redis
-  //store the fish type in inventory
+  if(!req.user) return res.status(403).end();
   client.get("fish:"+req.params.id, function(err, reply) {
     // reply is null when the key is missing
     if(reply)

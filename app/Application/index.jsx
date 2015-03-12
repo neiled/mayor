@@ -19,8 +19,6 @@ var App = React.createClass({
     }.bind(this));
   },
   renderAuthLinks: function() {
-    console.log("state: ");
-    console.log(this.state.user);
     if(this.state.user && Object.keys(this.state.user).length !== 0)
     {
       return (<li><a href="/auth/logout">Sign out...</a></li>);
@@ -28,8 +26,27 @@ var App = React.createClass({
     return (<li><a href="/auth/twitter">Sign in...</a></li>);
 
   },
+  renderSidebar: function() {
+    if(this.state.user && Object.keys(this.state.user).length !== 0)
+    {
+      return (
+        <div className="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+          <div className="list-group">
+            <Link className="list-group-item" to="hunting">Hunting</Link>
+            <Link className="list-group-item" to="fishing">Fishing</Link>
+            <Link className="list-group-item" to="diving">Diving</Link>
+            <Link className="list-group-item" to="gardening">Gardening</Link>
+            <Link className="list-group-item" to="museum">Museum</Link>
+            <Link className="list-group-item" to="store">Store</Link>
+            <Link className="list-group-item" to="construction">Construction</Link>
+          </div>
+        </div>
+      );
+    }
+  },
   render: function () {
     var authLinks = this.renderAuthLinks();
+    var sidebar = this.renderSidebar();
     return (
         <div>
             <nav className="navbar navbar-inverse navbar-fixed-top">
@@ -60,17 +77,7 @@ var App = React.createClass({
                   </p>
                   <RouteHandler/>
                 </div>
-                <div className="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-                  <div className="list-group">
-                    <Link className="list-group-item" to="hunting">Hunting</Link>
-                    <Link className="list-group-item" to="fishing">Fishing</Link>
-                    <Link className="list-group-item" to="diving">Diving</Link>
-                    <Link className="list-group-item" to="gardening">Gardening</Link>
-                    <Link className="list-group-item" to="museum">Museum</Link>
-                    <Link className="list-group-item" to="store">Store</Link>
-                    <Link className="list-group-item" to="construction">Construction</Link>
-                  </div>
-                </div>
+                {sidebar}
               </div>
             </div>
         </div>
