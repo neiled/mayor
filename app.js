@@ -38,7 +38,7 @@ passport.use(new GitHubStrategy({
     callbackURL: process.env.GITHUB_CALLBACK //"http://127.0.0.1:3000/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    models.User.findOrCreate({where: { twitterId: profile.id }}).spread(function (user) {
+    models.User.findOrCreate({where: { twitterId: "gh"+profile.id }}).spread(function (user) {
       return done(null, user);
     });
   }
@@ -53,9 +53,6 @@ passport.deserializeUser(function(id, done) {
         done(null, user);
     });
 });
-
-// view engine setup
-//app.set('views', path.join(__dirname, 'views'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -74,26 +71,15 @@ app.use("/", express.static(path.join(__dirname, 'client')));
 app.use('/fishing', fishing);
 app.use('/user', user);
 
-// GET /auth/twitter
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  The first step in Twitter authentication will involve redirecting
-//   the user to twitter.com.  After authorization, the Twitter will redirect
-//   the user back to this application at /auth/twitter/callback
-app.get('/auth/twitter',  passport.authenticate('twitter'));
 
-// GET /auth/twitter/callback
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
-//   login page.  Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
+app.get('/auth/twitter',  passport.authenticate('twitter'));
+app.get('/auth/github',  passport.authenticate('github'));
+
 app.get('/auth/twitter/callback',
   passport.authenticate('twitter', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/');
   });
-
-
-app.get('/auth/github',  passport.authenticate('github'));
 
 app.get('/auth/github/callback', 
   passport.authenticate('github', { failureRedirect: '/' }),
