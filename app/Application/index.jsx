@@ -9,12 +9,18 @@ var RouteHandler = Router.RouteHandler;
 
 var App = React.createClass({
   getInitialState: function() {
-    return {user: null};
+    return {user: null, inv:0};
   },
   componentDidMount: function() {
     $.get("/user/current", function(result) {
       if(this.isMounted()) {
         this.setState({user: result});
+      }
+    }.bind(this));
+    $.get("/user/inventory", function(result) {
+      if(this.isMounted()) {
+        console.log(result);
+        this.setState({inv: result.inventory.length});
       }
     }.bind(this));
   },
@@ -39,6 +45,9 @@ var App = React.createClass({
             <Link className="list-group-item" to="museum">Museum</Link>
             <Link className="list-group-item" to="store">Store</Link>
             <Link className="list-group-item" to="construction">Construction</Link>
+          </div>
+          <div className="list-group">
+            <Link className="list-group-item" to="inventory">Pockets <span className="badge">{this.state.inv}</span></Link>
           </div>
         </div>
       );

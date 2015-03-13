@@ -7,4 +7,12 @@ router.get('/current', function(req, res) {
 });
 
 
+router.get('/inventory', function(req, res) {
+  if(!req.user) return res.status(403).end();
+  var inventory = req.user.getInventories({include: [models.Item]}).then(function(inventory) {
+    res.json({inventory: inventory});
+  });
+});
+
+
 module.exports = router;
