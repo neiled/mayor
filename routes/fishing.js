@@ -2,8 +2,6 @@ var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
 var uuid = require('uuid');
-// var redis = require("redis"),
-//     client = redis.createClient();
 var client = require('../config/redis');
 var debug = require('debug')('api:fishing');
 

@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
+var GitHubStrategy = require('passport-github').Strategy;
 var session = require('express-session')
 var fishing = require('./routes/fishing');
 var user = require('./routes/user');
@@ -27,6 +28,18 @@ passport.use(new TwitterStrategy({
   function(token, tokenSecret, profile, done) {
     models.User.findOrCreate({where: { twitterId: profile.id }}).spread(function (user) {
       return done(null, user);
+    });
+  }
+));
+
+passport.use(new GitHubStrategy({
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: process.env.GITHUB_CALLBACK //"http://127.0.0.1:3000/auth/github/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    models.User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+      return done(err, user);
     });
   }
 ));
@@ -66,12 +79,7 @@ app.use('/user', user);
 //   request.  The first step in Twitter authentication will involve redirecting
 //   the user to twitter.com.  After authorization, the Twitter will redirect
 //   the user back to this application at /auth/twitter/callback
-app.get('/auth/twitter',
-  passport.authenticate('twitter'),
-  function(req, res){
-    // The request will be redirected to Twitter for authentication, so this
-    // function will not be called.
-  });
+app.get('/auth/twitter',  passport.authenticate('twitter'));
 
 // GET /auth/twitter/callback
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -84,6 +92,14 @@ app.get('/auth/twitter/callback',
     res.redirect('/');
   });
 
+
+app.get('/auth/github',  passport.authenticate('github'));
+
+app.get('/auth/github/callback', 
+  passport.authenticate('github', { failureRedirect: '/' }),
+  function(req, res) {
+    res.redirect('/');
+  });
 
 app.get('/auth/logout', function(req, res){
   req.logout();

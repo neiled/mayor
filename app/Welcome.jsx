@@ -10,6 +10,8 @@ var Welcome = React.createClass({
           <p>Welcome to your new town.</p>
         </div>
         <p>
+        <a href="/auth/twitter">Sign in with Twitter...</a>
+        <a href="/auth/github">Sign in with GitHub...</a>
         </p>
       </div>
     );
