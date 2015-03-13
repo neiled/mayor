@@ -1,3 +1,4 @@
+module.exports = function(app) {
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -11,7 +12,7 @@ var fishing = require('./routes/fishing');
 var user = require('./routes/user');
 var models = require("./models");
 
-var app = express();
+// var app = express();
 
 
 // Use the TwitterStrategy within Passport.
@@ -89,4 +90,5 @@ app.get('/auth/logout', function(req, res){
   res.redirect('/');
 });
 
-module.exports = app;
+return app;
+}

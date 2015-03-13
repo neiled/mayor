@@ -4,8 +4,12 @@ module.exports = function(options) {
   var dotenv = require('dotenv');
   dotenv.load();
 
+  var express = require('express');
+  var app = express();
+  var server = require('http').Server(app);
+  var io = require('socket.io')(server);  
   var debug = require('debug')('mayor:server');
-  var app = require('../app');
+  app = require('../app')(app);
   var renderApplication = require("../config/simple.js");
   var models = require("../models");
 
@@ -19,8 +23,7 @@ module.exports = function(options) {
   var STYLE_URL = options.separateStylesheet && (publicPath + "main.css?" + stats.hash);
   var SCRIPT_URL = publicPath + [].concat(stats.assetsByChunkName.main)[0];
   var COMMONS_URL = publicPath + [].concat(stats.assetsByChunkName.commons)[0];
-
-
+  
   // application
 	app.get("/*", function(req, res) {
 		renderApplication(req.path, SCRIPT_URL, STYLE_URL, COMMONS_URL, function(err, html) {
@@ -34,34 +37,16 @@ module.exports = function(options) {
       err.status = 404;
       next(err);
   });
-
-  // error handlers
-
-  // // development error handler
-  // // will print stacktrace
-  // if (app.get('env') === 'development') {
-  //     app.use(function(err, req, res, next) {
-  //         res.status(err.status || 500);
-  //         res.render('error', {
-  //             message: err.message,
-  //             error: err
-  //         });
-  //     });
-  // }
-  //
-  // // production error handler
-  // // no stacktraces leaked to user
-  // app.use(function(err, req, res, next) {
-  //     res.status(err.status || 500);
-  //     res.render('error', {
-  //         message: err.message,
-  //         error: {}
-  //     });
-  // });
-
+  
+  io.on('connection', function (socket) {
+    socket.emit('news', { hello: 'world' });
+    socket.on('my other event', function (data) {
+      console.log(data);
+    });
+  });  
 
   models.sequelize.sync().then(function () {
-    var server = app.listen(app.get('port'), app.get('ip'), function() {
+    server.listen(app.get('port'), app.get('ip'), function() {
       debug('Express server listening on port ' + server.address().port);
     });
   });

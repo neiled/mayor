@@ -23,6 +23,12 @@ var App = React.createClass({
         this.setState({inv: result.inventory.length});
       }
     }.bind(this));
+    var socket = io.connect();
+    socket.on('inventory:update', function (data) {
+      console.log(data);
+      this.setState({inv:data.inventory.length})
+    }.bind(this));    
+    
   },
   renderAuthLinks: function() {
     if(this.state.user && Object.keys(this.state.user).length !== 0)
