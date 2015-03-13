@@ -27,7 +27,7 @@ module.exports = function(io)
       // reply is null when the key is missing
       if(reply)
       {
-        models.Inventory.findOrCreate({where: { UserId: req.user.id, ItemId: reply },  defaults: {amount: 1}}).spread(function(fish) {
+        models.Inventory.findOrCreate({where: { UserId: req.user.id, ItemId: reply },  defaults: {amount: 0}}).spread(function(fish) {
           fish.increment('amount').then(function(fish) {
             var inventory = req.user.getInventories({include: [models.Item]}).then(function(inventory) {
               io.emit('inventory:update', {inventory: inventory});
