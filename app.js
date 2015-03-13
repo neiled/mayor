@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function(app, io) {
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -9,7 +9,7 @@ var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 var GitHubStrategy = require('passport-github').Strategy;
 var session = require('express-session')
-var fishing = require('./routes/fishing');
+var fishing = require('./routes/fishing')(io);
 var user = require('./routes/user');
 var models = require("./models");
 

@@ -9,7 +9,7 @@ module.exports = function(options) {
   var server = require('http').Server(app);
   var io = require('socket.io')(server);  
   var debug = require('debug')('mayor:server');
-  app = require('../app')(app);
+  app = require('../app')(app, io);
   var renderApplication = require("../config/simple.js");
   var models = require("../models");
 
