@@ -14,9 +14,11 @@ var Welcome = React.createClass({
             <div className="panel">
               <div className="panel-heading">
 								<h3 className="panel-title">Log In</h3>
-							</div>            
-              <a href="/auth/twitter"><button className="btn btn-primary btn-labeled icon-lg fa fa-twitter">Twitter</button></a>
-              <a href="/auth/github"><button className="btn btn-primary btn-labeled icon-lg fa fa-github">GitHub</button></a>
+							</div>
+							<div className="panel-body">
+                <a href="/auth/twitter"><button className="btn btn-primary btn-labeled icon-lg fa fa-twitter">Twitter</button></a>
+                <a href="/auth/github"><button className="btn btn-primary btn-labeled icon-lg fa fa-github">GitHub</button></a>
+              </div>
             </div>          
           </div>
         </div>
