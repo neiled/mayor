@@ -6,13 +6,14 @@ module.exports = function(io)
   var uuid = require('uuid');
   var client = require('../config/redis');
   var debug = require('debug')('api:fishing');
-  
-  
-  
+  var inventory = require('../lib/inventory');
+
+
+
   client.on("error", function (err) {
       debug("Error " + err);
   });
-  
+
   router.post('/cast', function(req, res) {
     if(!req.user) return res.status(403).end();
     var fish = getFish(function(fish) {
@@ -20,42 +21,33 @@ module.exports = function(io)
       res.json({fish: fish});
     });
   });
-  
+
   router.post('/keep/:id', function(req, res) {
     if(!req.user) return res.status(403).end();
     client.get("fish:"+req.params.id, function(err, reply) {
       // reply is null when the key is missing
       if(reply)
       {
-        models.Inventory.findOrCreate({where: { UserId: req.user.id, ItemId: reply },  defaults: {amount: 0}}).spread(function(fish) {
-          fish.increment('amount').then(function(fish) {
-            var inventory = req.user.getInventories({include: [models.Item]}).then(function(inventory) {
-              io.emit('inventory:update', {inventory: inventory});
-              res.status(200).end();
-            });            
-            
-            
-          });
+        inventory.addToInventory(req.user, reply, io, function() {
+          res.status(200).end();
         });
       }
   });
-  
+
   });
-  
+
   var getFish = function(callback) {
     debug("getFish");
     var rarity = getRarity();
     models.Item.findAll({where: {category: 'FISH', rarity: rarity}}).then(function (items) {
         var fish = items[Math.floor(Math.random()*items.length)];
-        debug("found fish");
-        debug(fish);
         callback({id: uuid.v4(), name: fish.name, type_id: fish.id});
     });
   };
-  
+
   var getRarity = function() {
     var random = Math.random() * 1000;
-  
+
     if(random < 500)
       return "Very Common";
     if(random < 800)
@@ -66,7 +58,7 @@ module.exports = function(io)
       return "Rare";
     return "Very Rare";
   };
-  
-  
+
+
   return router;
 }

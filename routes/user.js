@@ -9,8 +9,9 @@ router.get('/current', function(req, res) {
 
 router.get('/inventory', function(req, res) {
   if(!req.user) return res.status(403).end();
-  var inventory = req.user.getInventories({include: [models.Item]}).then(function(inventory) {
-    res.json({inventory: inventory});
+  req.user.getInventories({include: [models.Item]}).then(function(inventory) {
+    var sum = inventory.reduce(function(running, current) { return running + current.amount;}, 0);
+    res.json({inventory: inventory, total: sum, coins:req.user.coins});
   });
 });
 

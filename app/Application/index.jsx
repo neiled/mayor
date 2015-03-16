@@ -9,26 +9,25 @@ var RouteHandler = Router.RouteHandler;
 
 var App = React.createClass({
   getInitialState: function() {
-    return {user: null, inv:0};
+    return {user: null, total:0, coins:0};
   },
   componentDidMount: function() {
     $.get("/user/current", function(result) {
       if(this.isMounted()) {
         this.setState({user: result});
+        var socket = io.connect();
+        socket.on('inventory:update:'+result.user.id, function (data) {
+          this.setState({total:data.total, coins: data.coins})
+        }.bind(this));
       }
     }.bind(this));
     $.get("/user/inventory", function(result) {
       if(this.isMounted()) {
-        console.log(result);
-        this.setState({inv: result.inventory.length});
+        this.setState({total: result.total});
+        this.setState({coins: result.coins});
       }
     }.bind(this));
-    var socket = io.connect();
-    socket.on('inventory:update', function (data) {
-      console.log(data);
-      this.setState({inv:data.inventory.length})
-    }.bind(this));    
-    
+
   },
   renderAuthLinks: function() {
     if(this.state.user && Object.keys(this.state.user).length !== 0)
@@ -53,7 +52,8 @@ var App = React.createClass({
             <Link className="list-group-item" to="construction">Construction</Link>
           </div>
           <div className="list-group">
-            <Link className="list-group-item" to="inventory">Pockets <span className="badge">{this.state.inv}</span></Link>
+            <Link className="list-group-item" to="inventory">Pockets <span className="badge">{this.state.total}</span></Link>
+            <Link className="list-group-item" to="coins">Coins <span className="badge">{this.state.coins}</span></Link>
           </div>
         </div>
       );

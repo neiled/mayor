@@ -33,7 +33,6 @@ var ProductTable = React.createClass({
   },
   componentDidMount: function() {
     $.get("/user/inventory", function(result) {
-      console.log(result);
       if(this.isMounted()) {
         this.setState({inventory: result.inventory});
       }
@@ -41,12 +40,11 @@ var ProductTable = React.createClass({
   },
   render: function() {
       var rows = [];
-      console.log(this.state.inventory);
       this.state.inventory.forEach(function(product) {
           rows.push(<ProductRow product={product} key={product.id}/>);
       });
       return (
-          <table className="table">
+          <table className="table table-striped">
               <thead>
                   <tr>
                       <th>Name</th>
