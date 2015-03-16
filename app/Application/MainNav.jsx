@@ -41,10 +41,10 @@ var MainNav = React.createClass({
 								<Link className="shortcut-grid" to="fishing" activeClassName="active-link"><i className="fa fa-ship"></i></Link>
 							</li>
 							<li title="" className="col-xs-4" data-original-title="" data-content="Store">
-								<Link className="shortcut-grid" to="fishing" activeClassName="active-link"><i className="fa fa-shopping-cart"></i></Link>
+								<Link className="shortcut-grid" to="store" activeClassName="active-link"><i className="fa fa-shopping-cart"></i></Link>
 							</li>
 							<li title="" className="col-xs-4" data-original-title="" data-content="Pockets">
-								<Link className="shortcut-grid" to="fishing" activeClassName="active-link"><i className="fa fa-cube"></i></Link>
+								<Link className="shortcut-grid" to="inventory" activeClassName="active-link"><i className="fa fa-cube"></i></Link>
 							</li>
 						</ul>
 					</div>
