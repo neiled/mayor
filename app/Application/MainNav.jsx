@@ -62,16 +62,16 @@ var MainNav = React.createClass({
 						
 									<li className="list-header">What to do?</li>
 									
-                                    <li><Link to="hunting"><span className="menu-title">Hunting</span></Link></li>
-                                    <li><Link to="fishing"><span className="menu-title">Fishing</span></Link></li>
-                                    <li><Link to="diving"><span className="menu-title">Diving</span></Link></li>
-                                    <li><Link to="gardening"><span className="menu-title">Gardening</span></Link></li>
-                                    <li><Link to="museum"><span className="menu-title">Museum</span></Link></li>
-                                    <li><Link to="store"><span className="menu-title">Store</span></Link></li>
-                                    <li><Link to="construction"><span className="menu-title">Construction</span></Link></li>
-                                    <li className="list-divider"></li>
-                                    <li><Link to="inventory"><span className="menu-title">Pockets <span className="pull-right badge badge-purple">{this.state.total}</span></span></Link></li>
-                                    <li><Link to="coins"><span className="menu-title">Coins <span className="pull-right badge badge-purple">{this.state.coins}</span></span></Link></li>
+                                    <li><Link to="hunting" activeClassName="active-link"><span className="menu-title">Hunting</span></Link></li>
+                                    <li><Link to="fishing" activeClassName="active-link"><span className="menu-title">Fishing</span></Link></li>
+                                    <li><Link to="diving" activeClassName="active-link"><span className="menu-title">Diving</span></Link></li>
+                                    <li><Link to="gardening" activeClassName="active-link"><span className="menu-title">Gardening</span></Link></li>
+                                    <li><Link to="museum" activeClassName="active-link"><span className="menu-title">Museum</span></Link></li>
+                                    <li><Link to="store" activeClassName="active-link"><span className="menu-title">Store</span></Link></li>
+                                    <li><Link to="construction" activeClassName="active-link"><span className="menu-title">Construction</span></Link></li>
+                                    <li className="list-divider" activeClassName="active-link"></li>
+                                    <li><Link to="inventory" activeClassName="active-link"><span className="menu-title">Pockets <span className="pull-right badge badge-purple">{this.state.total}</span></span></Link></li>
+                                    <li><Link to="coins" activeClassName="active-link"><span className="menu-title">Coins <span className="pull-right badge badge-purple">{this.state.coins}</span></span></Link></li>
 
 									<li className="active-link">
 										<a href="#">
