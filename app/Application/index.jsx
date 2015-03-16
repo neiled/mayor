@@ -7,6 +7,11 @@ var Route = Router.Route;
 var RouteHandler = Router.RouteHandler;
 
 require('../css/mayor.css');
+require('../css/nifty.min.css');
+
+
+
+var Navbar = require('./Navbar');
 
 
 var App = React.createClass({
@@ -29,14 +34,6 @@ var App = React.createClass({
         this.setState({coins: result.coins});
       }
     }.bind(this));
-
-  },
-  renderAuthLinks: function() {
-    if(this.state.user && Object.keys(this.state.user).length !== 0)
-    {
-      return (<li><a href="/auth/logout">Sign out...</a></li>);
-    }
-    return (<li><a href="/auth/twitter">Sign in...</a></li>);
 
   },
   renderSidebar: function() {
@@ -62,42 +59,18 @@ var App = React.createClass({
     }
   },
   render: function () {
-    var authLinks = this.renderAuthLinks();
-    var sidebar = this.renderSidebar();
+    // var authLinks = this.renderAuthLinks();
+    // var sidebar = this.renderSidebar();
+
     return (
-        <div>
-            <nav className="navbar navbar-inverse navbar-fixed-top">
-              <div className="container">
-                <div className="navbar-header">
-                  <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span className="sr-only">Toggle navigation</span>
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
-                  </button>
-                  <a className="navbar-brand" href="/">Mayor</a>
-                </div>
-                <div id="navbar" className="navbar-collapse collapse">
-                  <ul className="nav navbar-nav navbar-right">
-                    {authLinks}
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Help</a></li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
-            <div className="container">
-              <div className="row row-offcanvas row-offcanvas-right">
-                <div className="col-xs-12 col-sm-9">
-                  <p className="pull-right visible-xs">
-                    <button type="button" className="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-                  </p>
-                  <RouteHandler/>
-                </div>
-                {sidebar}
-              </div>
-            </div>
+      <div id="container" className="effect mainnav-lg">
+        <Navbar />
+        <div className="boxed">
+          <div id="content-container">
+            <RouteHandler/>
+          </div>
         </div>
+      </div>
     );
   }
 });
