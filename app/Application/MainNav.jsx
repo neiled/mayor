@@ -1,6 +1,33 @@
 var React = require("react");
+var Router = require('react-router'); // or var Router = ReactRouter; in browsers
+
+var DefaultRoute = Router.DefaultRoute;
+var Link = Router.Link;
+var Route = Router.Route;
+var RouteHandler = Router.RouteHandler;
 
 var MainNav = React.createClass({
+  getInitialState: function() {
+    return {user: null, total:0, coins:0};
+  },
+  componentDidMount: function() {
+    $.get("/user/current", function(result) {
+      if(this.isMounted()) {
+        this.setState({user: result});
+        var socket = io.connect();
+        socket.on('inventory:update:'+result.user.id, function (data) {
+          this.setState({total:data.total, coins: data.coins})
+        }.bind(this));
+      }
+    }.bind(this));
+    $.get("/user/inventory", function(result) {
+      if(this.isMounted()) {
+        this.setState({total: result.total});
+        this.setState({coins: result.coins});
+      }
+    }.bind(this));
+
+  },    
     render: function() {
         var style_nano = {right: '-16px'};        
         return (
@@ -33,8 +60,19 @@ var MainNav = React.createClass({
 							<div tabindex="0" className="nano-content" style={style_nano}>
 								<ul className="list-group" id="mainnav-menu">
 						
-									<li className="list-header">Link List</li>
-						
+									<li className="list-header">What to do?</li>
+									
+                                    <li><Link className="list-group-item" to="hunting">Hunting</Link></li>
+                                    <li><Link className="list-group-item" to="fishing">Fishing</Link></li>
+                                    <li><Link className="list-group-item" to="diving">Diving</Link></li>
+                                    <li><Link className="list-group-item" to="gardening">Gardening</Link></li>
+                                    <li><Link className="list-group-item" to="museum">Museum</Link></li>
+                                    <li><Link className="list-group-item" to="store">Store</Link></li>
+                                    <li><Link className="list-group-item" to="construction">Construction</Link></li>
+                                    <li className="list-divider"></li>
+                                    <li><Link className="list-group-item" to="inventory">Pockets <span className="pull-right badge badge-purple">{this.state.total}</span></Link></li>
+                                    <li><Link className="list-group-item" to="coins">Coins <span className="pull-right badge badge-purple">{this.state.coins}</span></Link></li>
+
 									<li className="active-link">
 										<a href="#">
 											<i className="fa fa-plane"></i>
