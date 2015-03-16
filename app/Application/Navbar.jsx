@@ -1,16 +1,16 @@
 var React = require("react");
 
-var url_img_av1 = require("../img/av1.png");
-
 var Navbar = React.createClass({
   render: function() {
+    var url_img_av1 = require("../img/av1.png");
+    var url_img_logo = require("../img/logo.png");    
     return (
     <header id="navbar">
     			<div id="navbar-container" className="boxed">
 
     				<div className="navbar-header">
-    					<a href="index.html" className="navbar-brand">
-    						<img src="img/logo.png" alt="Model Mayor" className="brand-icon"/>
+    					<a href="/" className="navbar-brand">
+    						<img src={url_img_logo} alt="Model Mayor" className="brand-icon"/>
     						<div className="brand-title">
     							<span className="brand-text">Model Mayor</span>
     						</div>

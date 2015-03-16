@@ -37,20 +37,14 @@ var MainNav = React.createClass({
 
 					<div id="mainnav-shortcut">
 						<ul className="list-unstyled">
-							<li title="" className="col-xs-4" data-original-title="" data-content="Shortcut 1">
-								<a className="shortcut-grid" href="#">
-									<i className="fa fa-car"></i>
-								</a>
+							<li title="" className="col-xs-4" data-original-title="" data-content="Fishing">
+								<Link className="shortcut-grid" to="fishing" activeClassName="active-link"><i className="fa fa-ship"></i></Link>
 							</li>
-							<li title="" className="col-xs-4" data-original-title="" data-content="Shortcut 2">
-								<a className="shortcut-grid" href="#">
-									<i className="fa fa-taxi"></i>
-								</a>
+							<li title="" className="col-xs-4" data-original-title="" data-content="Store">
+								<Link className="shortcut-grid" to="fishing" activeClassName="active-link"><i className="fa fa-shopping-cart"></i></Link>
 							</li>
-							<li title="" className="col-xs-4" data-original-title="" data-content="Shortcut 3">
-								<a className="shortcut-grid" href="#">
-									<i className="fa fa-bus"></i>
-								</a>
+							<li title="" className="col-xs-4" data-original-title="" data-content="Pockets">
+								<Link className="shortcut-grid" to="fishing" activeClassName="active-link"><i className="fa fa-cube"></i></Link>
 							</li>
 						</ul>
 					</div>
