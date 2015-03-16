@@ -8,7 +8,7 @@ var RouteHandler = Router.RouteHandler;
 
 require('../css/mayor.css');
 require('../css/nifty.min.css');
-// require('../js/nifty.min.js');
+require('../js/nifty.js');
 
 
 
