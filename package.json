@@ -6,7 +6,7 @@
     "start-dev": "node ./bin/dev-server",
     "dev-server": "webpack-dev-server --config webpack-dev-server.config.js --progress --colors --port 2992 --inline",
     "hot-dev-server": "webpack-dev-server --config webpack-hot-dev-server.config.js --hot --progress --colors --port 2992 --inline",
-    "build": "webpack --config webpack-production.config.js --progress --profile --colors"
+    "postinstall": "webpack --config webpack-production.config.js --progress --profile --colors"
   },
   "dependencies": {
     "async": "^0.9.0",
@@ -47,11 +47,11 @@
     "style-loader": "^0.8.3",
     "superagent": "^0.21.0",
     "url-loader": "^0.5.5",
-    "uuid": "^2.0.1"
+    "uuid": "^2.0.1",
+    "webpack": "^1.7.2"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "webpack": "^1.7.2",
     "webpack-dev-server": "^1.7.0"
   },
   "engines": {
