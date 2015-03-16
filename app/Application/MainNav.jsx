@@ -62,16 +62,16 @@ var MainNav = React.createClass({
 						
 									<li className="list-header">What to do?</li>
 									
-                                    <li><Link className="list-group-item" to="hunting">Hunting</Link></li>
-                                    <li><Link className="list-group-item" to="fishing">Fishing</Link></li>
-                                    <li><Link className="list-group-item" to="diving">Diving</Link></li>
-                                    <li><Link className="list-group-item" to="gardening">Gardening</Link></li>
-                                    <li><Link className="list-group-item" to="museum">Museum</Link></li>
-                                    <li><Link className="list-group-item" to="store">Store</Link></li>
-                                    <li><Link className="list-group-item" to="construction">Construction</Link></li>
+                                    <li><Link className="list-group-item" to="hunting"><span className="menu-title">Hunting</span></Link></li>
+                                    <li><Link className="list-group-item" to="fishing"><span className="menu-title">Fishing</span></Link></li>
+                                    <li><Link className="list-group-item" to="diving"><span className="menu-title">Diving</span></Link></li>
+                                    <li><Link className="list-group-item" to="gardening"><span className="menu-title">Gardening</span></Link></li>
+                                    <li><Link className="list-group-item" to="museum"><span className="menu-title">Museum</span></Link></li>
+                                    <li><Link className="list-group-item" to="store"><span className="menu-title">Store</span></Link></li>
+                                    <li><Link className="list-group-item" to="construction"><span className="menu-title">Construction</span></Link></li>
                                     <li className="list-divider"></li>
-                                    <li><Link className="list-group-item" to="inventory">Pockets <span className="pull-right badge badge-purple">{this.state.total}</span></Link></li>
-                                    <li><Link className="list-group-item" to="coins">Coins <span className="pull-right badge badge-purple">{this.state.coins}</span></Link></li>
+                                    <li><Link className="list-group-item" to="inventory"><span className="menu-title">Pockets <span className="pull-right badge badge-purple">{this.state.total}</span></span></Link></li>
+                                    <li><Link className="list-group-item" to="coins"><span className="menu-title">Coins <span className="pull-right badge badge-purple">{this.state.coins}</span></span></Link></li>
 
 									<li className="active-link">
 										<a href="#">
