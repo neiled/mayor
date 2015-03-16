@@ -20,7 +20,7 @@ module.exports = function(options) {
 
   var publicPath = stats.publicPath;
 
-  var STYLE_URL = options.separateStylesheet && (publicPath + "main.css?" + stats.hash);
+  var STYLE_URL = publicPath + "main.css?" + stats.hash;
   var SCRIPT_URL = publicPath + [].concat(stats.assetsByChunkName.main)[0];
   var COMMONS_URL = publicPath + [].concat(stats.assetsByChunkName.commons)[0];
 

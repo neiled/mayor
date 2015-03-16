@@ -6,6 +6,8 @@ var Link = Router.Link;
 var Route = Router.Route;
 var RouteHandler = Router.RouteHandler;
 
+require('../css/mayor.css');
+
 
 var App = React.createClass({
   getInitialState: function() {
