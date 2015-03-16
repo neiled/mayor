@@ -1,8 +1,6 @@
 var React = require("react");
 
-var url = require("../img/flags/united-kingdom.png");
-
-console.log(url);
+var url_img_av1 = require("../img/av1.png");
 
 var Navbar = React.createClass({
   render: function() {
@@ -12,9 +10,9 @@ var Navbar = React.createClass({
 
     				<div className="navbar-header">
     					<a href="index.html" className="navbar-brand">
-    						<img src="img/logo.png" alt="Nifty Logo" className="brand-icon"/>
+    						<img src="img/logo.png" alt="Model Mayor" className="brand-icon"/>
     						<div className="brand-title">
-    							<span className="brand-text">Nifty</span>
+    							<span className="brand-text">Model Mayor</span>
     						</div>
     					</a>
     				</div>
@@ -248,61 +246,10 @@ var Navbar = React.createClass({
 
     					</ul>
     					<ul className="nav navbar-top-links pull-right">
-
-    						<li className="dropdown">
-    							<a className="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
-    								<span className="lang-selected">
-    									<img className="lang-flag" src={url} alt="English"/>
-    									<span className="lang-id">EN</span>
-    									<span className="lang-name">English</span>
-    								</span>
-    							</a>
-
-    							<ul className="head-list dropdown-menu with-arrow">
-    								<li>
-    									<a href="#" className="active">
-    										<img className="lang-flag" src={url} alt="English"/>
-    										<span className="lang-id">EN</span>
-    										<span className="lang-name">English</span>
-    									</a>
-    								</li>
-    								<li>
-    									<a href="#">
-    										<img className="lang-flag" src="img/flags/france.png" alt="France"/>
-    										<span className="lang-id">FR</span>
-    										<span className="lang-name">Francais</span>
-    									</a>
-    								</li>
-    								<li>
-    									<a href="#">
-    										<img className="lang-flag" src="img/flags/germany.png" alt="Germany"/>
-    										<span className="lang-id">DE</span>
-    										<span className="lang-name">Deutsch</span>
-    									</a>
-    								</li>
-    								<li>
-    									<a href="#">
-    										<img className="lang-flag" src="img/flags/italy.png" alt="Italy"/>
-    										<span className="lang-id">IT</span>
-    										<span className="lang-name">Italiano</span>
-    									</a>
-    								</li>
-    								<li>
-    									<a href="#">
-    										<img className="lang-flag" src="img/flags/spain.png" alt="Spain"/>
-    										<span className="lang-id">ES</span>
-    										<span className="lang-name">Spanish</span>
-    									</a>
-    								</li>
-    							</ul>
-    						</li>
-
-
-
     						<li id="dropdown-user" className="dropdown">
     							<a href="#" data-toggle="dropdown" className="dropdown-toggle text-right">
     								<span className="pull-right">
-    									<img className="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture"/>
+    									<img className="img-circle img-user media-object" src={url_img_av1} alt="Profile Picture"/>
     								</span>
     								<div className="username hidden-xs">John Doe</div>
     							</a>

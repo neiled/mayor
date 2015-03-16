@@ -12,6 +12,7 @@ require('../css/nifty.min.css');
 
 
 var Navbar = require('./Navbar');
+var MainNav = require('./MainNav');
 
 
 var App = React.createClass({
@@ -69,6 +70,7 @@ var App = React.createClass({
           <div id="content-container">
             <RouteHandler/>
           </div>
+          <MainNav />
         </div>
       </div>
     );
