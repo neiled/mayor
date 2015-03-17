@@ -55,20 +55,11 @@ var Navbar = React.createClass({
 
     							<div className="dropdown-menu dropdown-menu-md with-arrow">
     								<div className="pad-all bord-btm">
-    									<p className="text-lg text-muted text-thin mar-no">You have 3 messages.</p>
+    									<p className="text-lg text-muted text-thin mar-no">You have 5 messages.</p>
     								</div>
     								<div className="nano scrollable">
     									<div className="nano-content">
     										<ul className="head-list">
-
-    											<li>
-    												<a href="#">
-    													<div className="clearfix">
-    														<p className="pull-left">Progressbar</p>
-    														<p className="pull-right">70%</p>
-    													</div>
-    												</a>
-    											</li>
 
     											<li>
     												<a href="#" className="media">
