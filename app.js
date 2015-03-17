@@ -38,7 +38,7 @@ passport.use(new GitHubStrategy({
     callbackURL: process.env.GITHUB_CALLBACK //"http://127.0.0.1:3000/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    models.User.findOrCreate({where: { twitterId: "gh"+profile.id }}).spread(function (user) {
+    models.User.findOrCreate({where: { gitHubId: "gh"+profile.id }}).spread(function (user) {
       return done(null, user);
     });
   }

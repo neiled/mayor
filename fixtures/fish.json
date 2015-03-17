@@ -4,7 +4,7 @@
       "data":{
          "id":1,
          "name":"Carp",
-         "rarity":"Very Common",
+         "rarity":"Very Common","cost":200,
          "category":"FISH"
       }
    },
@@ -13,7 +13,7 @@
       "data":{
          "id":2,
          "name":"Black Bass",
-         "rarity":"Very Common",
+         "rarity":"Very Common","cost":200,
          "category":"FISH"
       }
    },
@@ -22,7 +22,7 @@
       "data":{
          "id":3,
          "name":"Sea Bass",
-         "rarity":"Very Common",
+         "rarity":"Very Common","cost":200,
          "category":"FISH"
       }
    },
@@ -31,7 +31,7 @@
       "data":{
          "id":4,
          "name":"Salmon",
-         "rarity":"Very Common",
+         "rarity":"Very Common","cost":200,
          "category":"FISH"
       }
    },
@@ -40,7 +40,7 @@
       "data":{
          "id":5,
          "name":"Barbel Steed",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -49,7 +49,7 @@
       "data":{
          "id":6,
          "name":"Bitterling",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -58,7 +58,7 @@
       "data":{
          "id":7,
          "name":"Cherry Salmon",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -67,7 +67,7 @@
       "data":{
          "id":8,
          "name":"Crawfish",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -76,7 +76,7 @@
       "data":{
          "id":9,
          "name":"Crucian Carp",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -85,7 +85,7 @@
       "data":{
          "id":10,
          "name":"Dab",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -94,7 +94,7 @@
       "data":{
          "id":11,
          "name":"Frog",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -103,7 +103,7 @@
       "data":{
          "id":12,
          "name":"Horse Mackerel",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -112,7 +112,7 @@
       "data":{
          "id":13,
          "name":"Loach",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -121,7 +121,7 @@
       "data":{
          "id":14,
          "name":"Pale Chub",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -130,7 +130,7 @@
       "data":{
          "id":15,
          "name":"Pond Smelt",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -139,7 +139,7 @@
       "data":{
          "id":16,
          "name":"Small Bass",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -148,7 +148,7 @@
       "data":{
          "id":17,
          "name":"Squid",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -157,7 +157,7 @@
       "data":{
          "id":18,
          "name":"Seahorse",
-         "rarity":"Common",
+         "rarity":"Common","cost":1000,
          "category":"FISH"
       }
    },
@@ -166,7 +166,7 @@
       "data":{
          "id":19,
          "name":"Bluegill",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -175,7 +175,7 @@
       "data":{
          "id":20,
          "name":"Butterflyfish",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -184,7 +184,7 @@
       "data":{
          "id":21,
          "name":"Brook Trout",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -193,7 +193,7 @@
       "data":{
          "id":22,
          "name":"Clownfish",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -202,7 +202,7 @@
       "data":{
          "id":23,
          "name":"Catfish",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -211,7 +211,7 @@
       "data":{
          "id":24,
          "name":"Dab",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -220,7 +220,7 @@
       "data":{
          "id":25,
          "name":"Eel",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -229,7 +229,7 @@
       "data":{
          "id":26,
          "name":"Football Fish",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -238,7 +238,7 @@
       "data":{
          "id":27,
          "name":"Freshwater Goby",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -247,7 +247,7 @@
       "data":{
          "id":28,
          "name":"Killifish",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -256,7 +256,7 @@
       "data":{
          "id":29,
          "name":"King Salmon",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -265,7 +265,7 @@
       "data":{
          "id":30,
          "name":"Large Bass",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -274,7 +274,7 @@
       "data":{
          "id":31,
          "name":"Neon Tetra",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -283,7 +283,7 @@
       "data":{
          "id":32,
          "name":"Octopus",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -292,7 +292,7 @@
       "data":{
          "id":33,
          "name":"Olive Flounder",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -301,7 +301,7 @@
       "data":{
          "id":34,
          "name":"Puffer Fish",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -310,7 +310,7 @@
       "data":{
          "id":35,
          "name":"Red Snapper",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -319,7 +319,7 @@
       "data":{
          "id":36,
          "name":"Surgeonfish",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -328,7 +328,7 @@
       "data":{
          "id":37,
          "name":"Sweetfish",
-         "rarity":"Uncommon",
+         "rarity":"Uncommon","cost":4000,
          "category":"FISH"
       }
    },
@@ -337,7 +337,7 @@
       "data":{
          "id":38,
          "name":"Angelfish",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -346,7 +346,7 @@
       "data":{
          "id":39,
          "name":"Arapaima",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -355,7 +355,7 @@
       "data":{
          "id":40,
          "name":"Arowana",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -364,7 +364,7 @@
       "data":{
          "id":41,
          "name":"Blue Marlin",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -373,7 +373,7 @@
       "data":{
          "id":42,
          "name":"Char",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -382,7 +382,7 @@
       "data":{
          "id":43,
          "name":"Gar",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -391,7 +391,7 @@
       "data":{
          "id":44,
          "name":"Giant Snakehead",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -400,7 +400,7 @@
       "data":{
          "id":45,
          "name":"Goldfish",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -409,7 +409,7 @@
       "data":{
          "id":46,
          "name":"Guppy",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -418,7 +418,7 @@
       "data":{
          "id":47,
          "name":"Hammerhead Shark",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -427,7 +427,7 @@
       "data":{
          "id":48,
          "name":"Koi",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -436,7 +436,7 @@
       "data":{
          "id":49,
          "name":"Napoleonfish",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -445,7 +445,7 @@
       "data":{
          "id":50,
          "name":"Ocean Sunfish",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -454,7 +454,7 @@
       "data":{
          "id":51,
          "name":"Popeyed Goldfish",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -463,7 +463,7 @@
       "data":{
          "id":52,
          "name":"Saw Shark",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -472,7 +472,7 @@
       "data":{
          "id":53,
          "name":"Tuna",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -481,7 +481,7 @@
       "data":{
          "id":54,
          "name":"Whale Shark",
-         "rarity":"Rare",
+         "rarity":"Rare","cost":8000,
          "category":"FISH"
       }
    },
@@ -490,7 +490,7 @@
       "data":{
          "id":55,
          "name":"Coelacanth",
-         "rarity":"Very Rare",
+         "rarity":"Very Rare","cost":15000,
          "category":"FISH"
       }
    },
@@ -499,7 +499,7 @@
       "data":{
          "id":56,
          "name":"Dorado",
-         "rarity":"Very Rare",
+         "rarity":"Very Rare","cost":15000,
          "category":"FISH"
       }
    },
@@ -508,7 +508,7 @@
       "data":{
          "id":57,
          "name":"Shark",
-         "rarity":"Very Rare",
+         "rarity":"Very Rare","cost":15000,
          "category":"FISH"
       }
    },
@@ -517,7 +517,7 @@
       "data":{
          "id":58,
          "name":"Stringfish",
-         "rarity":"Very Rare",
+         "rarity":"Very Rare","cost":15000,
          "category":"FISH"
       }
    }
