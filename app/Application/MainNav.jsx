@@ -8,17 +8,12 @@ var RouteHandler = Router.RouteHandler;
 
 var MainNav = React.createClass({
   getInitialState: function() {
-    return {user: null, total:0, coins:0};
+    return {total:0, coins:0};
   },
   componentDidMount: function() {
-    $.get("/user/current", function(result) {
-      if(this.isMounted()) {
-        this.setState({user: result});
-        var socket = io.connect();
-        socket.on('inventory:update:'+result.user.id, function (data) {
-          this.setState({total:data.total, coins: data.coins})
-        }.bind(this));
-      }
+    var socket = io.connect();
+    socket.on('inventory:update:'+this.props.user.id, function (data) {
+      this.setState({total:data.total, coins: data.coins})
     }.bind(this));
     $.get("/user/inventory", function(result) {
       if(this.isMounted()) {
@@ -26,10 +21,9 @@ var MainNav = React.createClass({
         this.setState({coins: result.coins});
       }
     }.bind(this));
-
-  },    
+  },
     render: function() {
-        var style_nano = {right: '-16px'};        
+        var style_nano = {right: '-16px'};
         return (
         <nav id="mainnav-container">
 				<div id="mainnav">
@@ -51,9 +45,9 @@ var MainNav = React.createClass({
 						<div className="nano has-scrollbar">
 							<div tabindex="0" className="nano-content" style={style_nano}>
 								<ul className="list-group" id="mainnav-menu">
-						
+
 									<li className="list-header">What to do?</li>
-									
+
                                     <li><Link to="hunting" activeClassName="active-link"><span className="menu-title">Hunting</span></Link></li>
                                     <li><Link to="fishing" activeClassName="active-link"><span className="menu-title">Fishing</span></Link></li>
                                     <li><Link to="diving" activeClassName="active-link"><span className="menu-title">Diving</span></Link></li>
@@ -67,35 +61,11 @@ var MainNav = React.createClass({
 
 								</ul>
 
-								<div className="mainnav-widget">
-
-									<div className="show-small">
-										<a href="#" data-toggle="menu-widget" data-target="#demo-wg-server">
-											<i className="fa fa-desktop"></i>
-										</a>
-									</div>
-
-									<div className="hide-small mainnav-widget-content" id="demo-wg-server">
-										<ul className="list-group">
-											<li className="list-header pad-no pad-ver">Widget on Navigation Menu</li>
-											<li className="mar-btm">
-												<span className="label label-primary pull-right">15%</span>
-												<p>CPU Usage</p>
-											</li>
-											<li className="mar-btm">
-												<span className="label label-purple pull-right">75%</span>
-												<p>Bandwidth</p>
-											</li>
-											<li className="pad-ver"><a className="btn btn-success btn-bock" href="#">View Details</a></li>
-										</ul>
-									</div>
-								</div>
-
 							</div>
 						</div>
 					</div>
 				</div>
-			</nav>            
+			</nav>
             );
     }
 });

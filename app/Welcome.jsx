@@ -1,13 +1,9 @@
 var React = require("react");
 var request = require('superagent');
 
-var Welcome = React.createClass({
+var Login = React.createClass({
   render: function() {
     return (
-      <div>
-        <div id="page-title">
-          <h1 className="page-header text-overflow">Welcome to your new town</h1>
-        </div>
         <div id="page-content">
           <div className="row">
             <div className="col-lg-7">
@@ -17,12 +13,26 @@ var Welcome = React.createClass({
     						</div>
     						<div className="panel-body">
                   <a href="/auth/twitter" className="btn btn-primary btn-labeled icon-lg fa fa-twitter">Twitter</a>
+                  <span> </span>
                   <a href="/auth/github" className="btn btn-primary btn-labeled icon-lg fa fa-github">GitHub</a>
                 </div>
-              </div>          
+              </div>
             </div>
           </div>
-        </div>        
+        </div>
+    )
+  }
+});
+
+var Welcome = React.createClass({
+  render: function() {
+    var login = this.props.user && Object.keys(this.props.user).length !== 0 ? '' : <Login/>;
+    return (
+      <div>
+        <div id="page-title">
+          <h1 className="page-header text-overflow">Welcome to your new town</h1>
+        </div>
+        {login}
       </div>
     );
   }

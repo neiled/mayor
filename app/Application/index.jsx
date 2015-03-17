@@ -15,18 +15,28 @@ var MainNav = require('./MainNav');
 
 
 var App = React.createClass({
-
+  getInitialState: function() {
+    return {user: null};
+  },
+  componentDidMount: function() {
+    $.get("/user/current", function(result) {
+      if(this.isMounted()) {
+        this.setState({user: result});
+      }
+    }.bind(this));
+  },
   render: function () {
-
-
+    console.log(this.state.user);
+    var mainnav = this.state.user && Object.keys(this.state.user).length !== 0 ? <MainNav user={this.state.user}/> : '';
+    var navbar = this.state.user && Object.keys(this.state.user).length !== 0 ? <Navbar user={this.state.user}/> : '';
     return (
       <div id="container" className="effect mainnav-lg">
-        <Navbar />
+        {navbar}
         <div className="boxed">
           <div id="content-container">
-            <RouteHandler/>
+            <RouteHandler user={this.state.user}/>
           </div>
-          <MainNav />
+          {mainnav}
         </div>
       </div>
     );

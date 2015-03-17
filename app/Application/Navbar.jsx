@@ -3,7 +3,7 @@ var React = require("react");
 var Navbar = React.createClass({
   render: function() {
     var url_img_av1 = require("../img/av1.png");
-    var url_img_logo = require("../img/logo.png");    
+    var url_img_logo = require("../img/logo.png");
     return (
     <header id="navbar">
     			<div id="navbar-container" className="boxed">
@@ -283,7 +283,7 @@ var Navbar = React.createClass({
     								</ul>
 
     								<div className="pad-all text-right">
-    									<a href="pages-login.html" className="btn btn-primary">
+    									<a href="/auth/logout" className="btn btn-primary">
     										<i className="fa fa-sign-out fa-fw"></i> Logout
     									</a>
     								</div>
