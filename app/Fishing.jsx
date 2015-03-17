@@ -47,13 +47,23 @@ var Fishing = React.createClass({
   render: function() {
     return (
       <div>
-        <div className="jumbotron">
-          <h2> Fishing </h2>
-          <p>Here you can fish the village waters.</p>
+        <div id="page-title">
+          <h1 className="page-header text-overflow">Fishing.</h1>
         </div>
-        <div>
-          {!this.state.fish ? <button className="btn btn-primary" onClick={this.handleClick}>Fish</button> : <p></p>}
-          {this.state.fish ? <FishingResults fish={this.state.fish} decision={this.resetAfterFishingDecision}/> : <p></p>}
+        <div id="page-content">
+          <div className="row">
+            <div className="col-lg-7">
+              <div className="panel">
+                <div className="panel-heading">
+    							<h3 className="panel-title">Let's go fishing...</h3>
+    						</div>
+    						<div className="panel-body">
+                  {!this.state.fish ? <button className="btn btn-primary" onClick={this.handleClick}>Fish</button> : <p></p>}
+                  {this.state.fish ? <FishingResults fish={this.state.fish} decision={this.resetAfterFishingDecision}/> : <p></p>}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -61,3 +71,4 @@ var Fishing = React.createClass({
 });
 
 module.exports = Fishing;
+
