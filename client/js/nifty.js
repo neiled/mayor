@@ -131,45 +131,49 @@ Both of the above methods will produce the same results.
 !function ($) {
 	"use strict";
 
-	var megadropdown = null,
-	mega = function(el){
-		var megaBtn = el.find('.mega-dropdown-toggle'), megaMenu = el.find('.mega-dropdown-menu');
-
-		megaBtn.on('click', function(e){
-			e.preventDefault();
-			el.toggleClass('open');
-		});
-	},
-	methods = {
-		toggle : function(){
-			this.toggleClass('open');
-			return null;
-		},
-		show : function(){
-			this.addClass('open');
-			return null;
-		},
-		hide : function(){
-			this.removeClass('open');
-			return null;
-		}
-	};
-
-	$.fn.niftyMega = function(method){
-		var chk = false;
-		this.each(function(){
-			if(methods[method]){
-				chk = methods[method].apply($(this).find('input'),Array.prototype.slice.call(arguments, 1));
-			}else if (typeof method === 'object' || !method) {
-				mega($(this));
-			};
-		});
-		return chk;
-	};
-
 	nifty.window.on('load', function() {
+
+		var megadropdown = null,
+		mega = function(el){
+			var megaBtn = el.find('.mega-dropdown-toggle'), megaMenu = el.find('.mega-dropdown-menu');
+
+			megaBtn.on('click', function(e){
+				e.preventDefault();
+				el.toggleClass('open');
+			});
+		},
+		methods = {
+			toggle : function(){
+				this.toggleClass('open');
+				return null;
+			},
+			show : function(){
+				this.addClass('open');
+				return null;
+			},
+			hide : function(){
+				this.removeClass('open');
+				return null;
+			}
+		};
+
+		$.fn.niftyMega = function(method){
+			var chk = false;
+			this.each(function(){
+				if(methods[method]){
+					chk = methods[method].apply($(this).find('input'),Array.prototype.slice.call(arguments, 1));
+				}else if (typeof method === 'object' || !method) {
+					mega($(this));
+				};
+			});
+			return chk;
+		};
+
 		megadropdown = $('.mega-dropdown');
-		if(megadropdown.length) megadropdown.niftyMega();
+		if(megadropdown.length){
+			alert('here~');
+			megadropdown.niftyMega();
+		}
 
 		$('html').on('click', function (e) {
 			if(megadropdown.length){

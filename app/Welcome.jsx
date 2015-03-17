@@ -30,7 +30,7 @@ var Welcome = React.createClass({
     return (
       <div>
         <div id="page-title">
-          <h1 className="page-header text-overflow">Welcome to your new town</h1>
+          <h1 className="page-header text-overflow">Welcome home.</h1>
         </div>
         {login}
       </div>
