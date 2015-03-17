@@ -5,12 +5,24 @@ var Inventory = React.createClass({
   render: function() {
     return (
       <div>
-        <div className="jumbotron">
-          <h2>Pockets</h2>
-          <p>Here you can see what you are carrying in your pockets.</p>
+        <div id="page-title">
+          <h1 className="page-header text-overflow">Pockets</h1>
         </div>
-        <ProductTable />
-      </div>
+        <div id="page-content">
+          <div className="row">
+            <div className="col-lg-7">
+              <div className="panel">
+                <div className="panel-heading">
+    							<h3 className="panel-title">Here's what you're carrying...</h3>
+    						</div>
+    						<div className="panel-body">
+                  <ProductTable />    						
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      
     );
   }
 });

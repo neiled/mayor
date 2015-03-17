@@ -48,7 +48,7 @@ var Fishing = React.createClass({
     return (
       <div>
         <div id="page-title">
-          <h1 className="page-header text-overflow">Fishing.</h1>
+          <h1 className="page-header text-overflow">Fishing</h1>
         </div>
         <div id="page-content">
           <div className="row">

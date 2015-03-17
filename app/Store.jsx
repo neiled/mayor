@@ -13,12 +13,24 @@ var Store = React.createClass({
     );
     return (
       <div>
-        <div className="jumbotron">
-          <h2>Store</h2>
-          <p>Time for some retail therapy...</p>
+        <div id="page-title">
+          <h1 className="page-header text-overflow">Store</h1>
         </div>
-        {tabbedAreaInstance}
-      </div>
+        <div id="page-content">
+          <div className="row">
+            <div className="col-lg-7">
+              <div className="panel">
+                <div className="panel-heading">
+    							<h3 className="panel-title">Time for some retail therapy...</h3>
+    						</div>
+    						<div className="panel-body">
+    						  {tabbedAreaInstance}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      
     );
   }
 });
