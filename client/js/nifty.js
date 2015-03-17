@@ -86,6 +86,11 @@ Both of the above methods will produce the same results.
 	};
 
 	nifty.window.on('load', function(){
+		window.nifty.container = $('#container');
+		window.nifty.navbar = $('#navbar');
+		window.nifty.contentContainer = $('#content-container');
+		window.nifty.mainNav = $('#mainnav-container');
+
 		//Activate the Bootstrap tooltips
 		var tooltip = $('.add-tooltip');
 		if (tooltip.length)tooltip.tooltip();
@@ -1012,7 +1017,10 @@ Both of the above methods will produce the same results.
 			return;
 		},
 		'colExpToggle' : function(){
-			if (nifty.container.hasClass('mainnav-lg mainnav-sm')) nifty.container.removeClass('mainnav-lg');
+			if (nifty.container.hasClass('mainnav-lg mainnav-sm'))
+			{
+				nifty.container.removeClass('mainnav-lg');
+			}
 			nifty.container.toggleClass('mainnav-lg mainnav-sm').removeClass('mainnav-in mainnav-out');
 			return nifty.window.trigger('resize');
 		},
@@ -1377,5 +1385,3 @@ Both of the above methods will produce the same results.
 	});
 
 }(jQuery);
-
-

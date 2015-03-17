@@ -1,6 +1,9 @@
 var React = require("react");
 
 var Navbar = React.createClass({
+  toggle: function(event) {
+    $.niftyNav('colExpToggle');
+  },
   render: function() {
     var url_img_av1 = require("../img/av1.png");
     var url_img_logo = require("../img/logo.png");
@@ -22,7 +25,7 @@ var Navbar = React.createClass({
     					<ul className="nav navbar-top-links pull-left">
 
     						<li className="tgl-menu-btn">
-    							<a className="mainnav-toggle" href="#">
+    							<a className="mainnav-toggle" href="#" onClick={this.toggle}>
     								<i className="fa fa-navicon fa-lg"></i>
     							</a>
     						</li>
