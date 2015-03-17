@@ -21,7 +21,7 @@ var ItemRow = React.createClass({
               <td>{this.props.item.Item.name}</td>
               <td>{this.props.item.amount}</td>
               <td>{this.props.item.Item.cost}</td>
-              <td></td>
+              <td><button className="btn btn-primary" onClick={this.sellItem}>Sell</button></td>
           </tr>
       );
   }
@@ -39,8 +39,10 @@ var ItemTable = React.createClass({
     }.bind(this));
     var socket = io.connect();
     socket.on('inventory:update:'+this.props.user.id, function (data) {
-      this.setState({inventory: data.inventory})
-    }.bind(this));    
+      if(this.isMounted()) {
+        this.setState({inventory: data.inventory})
+      }
+    }.bind(this));
   },
   render: function() {
       var rows = [];
@@ -66,7 +68,7 @@ var ItemTable = React.createClass({
 var SellPane = React.createClass({
   render: function() {
     return (
-      <ItemTable />
+      <ItemTable user={this.props.user}/>
     )
   }
 })
@@ -84,7 +86,7 @@ var Store = React.createClass({
   var tabbedAreaInstance = (
     <TabbedArea defaultActiveKey={1}>
       <TabPane eventKey={1} tab="Buy"><BuyPane /></TabPane>
-      <TabPane eventKey={2} tab="Sell"><SellPane /></TabPane>
+      <TabPane eventKey={2} tab="Sell"><SellPane user={this.props.user}/></TabPane>
     </TabbedArea>
     );
     return (
@@ -106,7 +108,7 @@ var Store = React.createClass({
             </div>
           </div>
         </div>
-      </div>      
+      </div>
     );
   }
 });
