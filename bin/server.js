@@ -38,13 +38,6 @@ module.exports = function(options) {
       next(err);
   });
 
-  io.on('connection', function (socket) {
-    socket.emit('news', { hello: 'world' });
-    socket.on('my other event', function (data) {
-      console.log(data);
-    });
-  });
-
   // models.sequelize.sync().then(function () {
     server.listen(app.get('port'), app.get('ip'), function() {
       debug('Express server listening on port ' + server.address().port);

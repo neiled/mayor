@@ -21,12 +21,11 @@ var App = React.createClass({
   componentDidMount: function() {
     $.get("/user/current", function(result) {
       if(this.isMounted()) {
-        this.setState({user: result});
+        this.setState({user: result.user});
       }
     }.bind(this));
   },
   render: function () {
-    console.log(this.state.user);
     var mainnav = this.state.user && Object.keys(this.state.user).length !== 0 ? <MainNav user={this.state.user}/> : '';
     var navbar = this.state.user && Object.keys(this.state.user).length !== 0 ? <Navbar user={this.state.user}/> : '';
     return (

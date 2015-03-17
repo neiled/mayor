@@ -12,6 +12,7 @@ var MainNav = React.createClass({
   },
   componentDidMount: function() {
     var socket = io.connect();
+    console.log(this.props.user);
     socket.on('inventory:update:'+this.props.user.id, function (data) {
       this.setState({total:data.total, coins: data.coins})
     }.bind(this));
