@@ -3,24 +3,28 @@ var request = require('superagent');
 var TabbedArea = require('react-bootstrap').TabbedArea;
 var TabPane = require('react-bootstrap').TabPane;
 
-var BuyPane = React.createClass({
-  render: function() {
-    return (
-      <TabPane eventKey={this.props.key} tab="Buy">Buy</TabPane>
-    )
-  }
-})
+
 
 var ItemRow = React.createClass({
-    render: function() {
-        return (
-            <tr>
-                <td>{this.props.item.Item.name}</td>
-                <td>{this.props.item.amount}</td>
-                <td>{this.props.item.Item.cost}</td>
-            </tr>
-        );
-    }
+  sellItem: function() {
+    $.ajax({
+      url: '/user/inventory/'+this.props.item.Item.id,
+      type: 'DELETE',
+      success: function(result) {
+          // Do something with the result
+      }
+    });
+  },
+  render: function() {
+      return (
+          <tr>
+              <td>{this.props.item.Item.name}</td>
+              <td>{this.props.item.amount}</td>
+              <td>{this.props.item.Item.cost}</td>
+              <td></td>
+          </tr>
+      );
+  }
 });
 
 var ItemTable = React.createClass({
@@ -33,6 +37,10 @@ var ItemTable = React.createClass({
         this.setState({inventory: result.inventory});
       }
     }.bind(this));
+    var socket = io.connect();
+    socket.on('inventory:update:'+this.props.user.id, function (data) {
+      this.setState({inventory: data.inventory})
+    }.bind(this));    
   },
   render: function() {
       var rows = [];
@@ -46,6 +54,7 @@ var ItemTable = React.createClass({
                       <th>Name</th>
                       <th>Amount</th>
                       <th>Selling Price</th>
+                      <th>Sell</th>
                   </tr>
               </thead>
               <tbody>{rows}</tbody>
@@ -57,19 +66,26 @@ var ItemTable = React.createClass({
 var SellPane = React.createClass({
   render: function() {
     return (
-      <TabPane eventKey={this.props.key} tab="Sell">Sell</TabPane>
+      <ItemTable />
     )
   }
 })
 
+var BuyPane = React.createClass({
+  render: function() {
+    return (
+      <p>Buy</p>
+    )
+  }
+})
 
 var Store = React.createClass({
   render: function() {
   var tabbedAreaInstance = (
-      <TabbedArea defaultActiveKey={1}>
-        <BuyPane key={1} />
-        <SellPane key={2} />
-      </TabbedArea>
+    <TabbedArea defaultActiveKey={1}>
+      <TabPane eventKey={1} tab="Buy"><BuyPane /></TabPane>
+      <TabPane eventKey={2} tab="Sell"><SellPane /></TabPane>
+    </TabbedArea>
     );
     return (
       <div>

@@ -10,7 +10,7 @@ var TwitterStrategy = require('passport-twitter').Strategy;
 var GitHubStrategy = require('passport-github').Strategy;
 var session = require('express-session')
 var fishing = require('./routes/fishing')(io);
-var user = require('./routes/user');
+var user = require('./routes/user')(io);
 var models = require("./models");
 
 // var app = express();
