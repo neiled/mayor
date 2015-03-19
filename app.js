@@ -12,6 +12,7 @@ var session = require('express-session')
 var fishing = require('./routes/fishing')(io);
 var user = require('./routes/user')(io);
 var models = require("./models");
+var analytics = require('../lib/analytics');
 
 // var app = express();
 
@@ -23,10 +24,11 @@ var models = require("./models");
 passport.use(new TwitterStrategy({
     consumerKey: process.env.TWITTER_KEY,
     consumerSecret: process.env.TWITTER_SECRET,
-    callbackURL: process.env.TWITTER_CALLBACK  
+    callbackURL: process.env.TWITTER_CALLBACK
   },
   function(token, tokenSecret, profile, done) {
     models.User.findOrCreate({where: { twitterId: profile.id }}).spread(function (user) {
+      analytics.addEvent('login', {type: 'twitter'});
       return done(null, user);
     });
   }
@@ -39,6 +41,7 @@ passport.use(new GitHubStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     models.User.findOrCreate({where: { gitHubId: "gh"+profile.id }}).spread(function (user) {
+      analytics.addEvent('login', {type: 'github'});
       return done(null, user);
     });
   }
@@ -81,7 +84,7 @@ app.get('/auth/twitter/callback',
     res.redirect('/');
   });
 
-app.get('/auth/github/callback', 
+app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/');

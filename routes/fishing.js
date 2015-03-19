@@ -7,7 +7,7 @@ module.exports = function(io)
   var client = require('../config/redis');
   var debug = require('debug')('api:fishing');
   var inventory = require('../lib/inventory');
-
+  var analytics = require('../lib/analytics');
 
 
   client.on("error", function (err) {
@@ -18,6 +18,7 @@ module.exports = function(io)
     if(!req.user) return res.status(403).end();
     var fish = getFish(function(fish) {
       client.set("fish:"+fish.id, fish.type_id);
+      analytics.addEvent('fishing', {fish: fish});
       res.json({fish: fish});
     });
   });
@@ -32,7 +33,7 @@ module.exports = function(io)
           res.status(200).end();
         });
       }
-  });
+    });
 
   });
 
