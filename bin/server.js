@@ -40,7 +40,7 @@ module.exports = function(options) {
 
   // models.sequelize.sync().then(function () {
     server.listen(app.get('port'), app.get('ip'), function() {
-      debug('Express server listening on port ' + server.address().port);
+      console.log('Express server listening on port ' + server.address().port);
     });
   // });
 
