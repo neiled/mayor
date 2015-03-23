@@ -12,7 +12,7 @@ var session = require('express-session')
 var fishing = require('./routes/fishing')(io);
 var user = require('./routes/user')(io);
 var models = require("./models");
-var analytics = require('../lib/analytics');
+var analytics = require('./lib/analytics');
 
 // var app = express();
 
