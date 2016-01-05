@@ -10,7 +10,7 @@ module.exports = function(grunt) {
         import_test_data: {
             src: ['fixtures/*.json'],
             models: function () {  //returns mapping model name: model
-                return require('./models')
+                return require('./models');
             }
         }
     }

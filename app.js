@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 var GitHubStrategy = require('passport-github').Strategy;
-var session = require('express-session')
+var session = require('express-session');
 var fishing = require('./routes/fishing')(io);
 var user = require('./routes/user')(io);
 var models = require("./models");
@@ -52,7 +52,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-    models.User.find(id).then(function(user) {
+    models.User.findById(id).then(function(user) {
         done(null, user);
     });
 });
@@ -96,4 +96,4 @@ app.get('/auth/logout', function(req, res){
 });
 
 return app;
-}
+};
